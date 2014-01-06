@@ -30,3 +30,4 @@ config/secrets.yml
 
 ## Environment normalisation:
 /vendor/bundle
+.env

@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'jquery-rails'
 
-gem 'foundation-rails'
+gem 'zurb-foundation', '~> 4.0.0'
 
 gem 'turbolinks'
 
@@ -31,8 +31,10 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'capistrano', group: :development
 
+gem 'foreman'
+gem 'unicorn'
+
 group :development, :test do
-  gem 'thin'
   gem 'debugger'
 end
 
