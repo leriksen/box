@@ -2,14 +2,26 @@
   %ul.title-area
     %li.name
       %h1
-        %a{href: "#"} KennelBox
+        =link_to 'KennelBox', root_url
     %li.toggle-topbar.menu-icon
-      %a{href: "#"} Menu
+      %a{href: '#'} Menu
   %section.top-bar-section
+    %ul.left
+      %li.divider
+      - unless user_signed_in?
+        %li.has-dropdown
+          =link_to "Logged in as foobar", root_url
+          %ul.dropdown
+            %li
+              =link_to 'Logout', root_url
+      - else
+        %li.active
+          =link_to 'Login', root_url
+      %li.divider
     %ul.right
-      %li.active
-        %a{href: "#"} Owners
       %li
-        %a{href: "#"} Animals
+        %a{href: '#'} Owners
       %li
-        %a{href: "#"} Bookings
+        %a{href: '#'} Animals
+      %li
+        %a{href: '#'} Bookings
