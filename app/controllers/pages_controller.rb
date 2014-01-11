@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  # rescue_from ActionView::MissingTemplate, with: :invalid_page
+  rescue_from ActionView::MissingTemplate, with: :invalid_page
 
   def index
   end
