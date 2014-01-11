@@ -34,8 +34,11 @@ gem 'capistrano', group: :development
 gem 'foreman'
 gem 'unicorn'
 
+gem 'devise'
+
 group :development, :test do
   gem 'debugger'
+  gem 'rspec-rails'
 end
 
 group :development do
