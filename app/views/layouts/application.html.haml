@@ -23,7 +23,9 @@
 
 %body
   .row
-    = render "shared/alerts"
+    = render 'shared/nav'
+    = render 'shared/alerts'
     = yield
+    = render 'shared/footer' 
 
   = javascript_include_tag "application"
