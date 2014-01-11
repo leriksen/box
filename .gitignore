@@ -32,3 +32,4 @@ config/secrets.yml
 /vendor/bundle
 .env
 public
+test
