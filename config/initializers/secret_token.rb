@@ -1,1 +1,1 @@
-Box::Application.config.secret_token = ENV['SECRET_TOKEN']
+Box::Application.config.secret_key_base = ENV['SECRET_TOKEN']
