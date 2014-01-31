@@ -7,17 +7,17 @@ class User < ActiveRecord::Base
 
   scope :with_role, -> (role) {where("roles_mask & #{2**ROLES.index(role.to_s)} > 0")}
 
-  ROLES = %w[admin moderator worker]
+  ROLES = [:admin, :manager, :worker]
 
   def roles=(roles)
-   self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
 
   def roles
-   ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
+    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
   end
 
   def role?(role)
-   roles.include? role.to_s
+    roles.include? role
   end
 end
