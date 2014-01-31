@@ -35,10 +35,12 @@ gem 'foreman'
 gem 'unicorn'
 
 gem 'devise'
+gem 'cancan'
 
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -49,6 +51,9 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard-livereload', require: false
   gem 'growl',  require: false
+end
+
+group :test do
 end
 
 group :production do
