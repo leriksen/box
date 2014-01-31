@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "person#{n}@example.com" }
 
-    factory :user_with_role do
+    factory :worker™ do
       ignore do
         role "worker"
       end
