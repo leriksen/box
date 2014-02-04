@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable
 
-  scope :with_role, -> (role) {where("roles_mask & #{2**ROLES.index(role.to_s)} > 0")}
+  scope :with_role, -> (role) {where("roles_mask & ? > 0", 2**ROLES.index(role.to_s))}
 
   ROLES = [:admin, :manager, :worker]
 
