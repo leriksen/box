@@ -14,10 +14,14 @@
           =link_to "Logged in as #{current_user.email}", root_url
           %ul.dropdown
             %li
-              =link_to 'Logout', destroy_user_session_path, :method => :delete
+              =link_to 'Sign out', destroy_user_session_path, :method => :delete
       - else
         %li.active
-          =link_to 'Login', new_user_session_path
+          - if no_users?
+            = link_to "Sign up", new_user_registration_path
+          - else
+            = link_to "Sign in", new_user_session_path
+
       %li.divider
     %ul.right
       %li
