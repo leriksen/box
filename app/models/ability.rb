@@ -6,10 +6,10 @@ class Ability
     
     if user.role? :admin
       can :manage, :all
-    else if user.role? :manager
-      can [:create, :update] :all
-    else if user.role? :worker
-      can [:read] :all
+    elsif user.role? :manager
+      can [:create, :update], :all
+    elsif user.role? :worker
+      can [:read], :all
     else # guest
     end
   end

@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable
 
-  scope :with_role, -> (role) {where("roles_mask & ? > 0", 2**ROLES.index(role.to_s))}
+  scope :with_role, -> (role) {where("roles_mask & ? > 0", 2**ROLES.index(role.to_sym))}
 
-  ROLES = [:admin, :manager, :worker]
+  ROLES = %i(admin manager worker)
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
