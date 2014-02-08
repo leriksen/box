@@ -1,5 +1,7 @@
 Box::Application.routes.draw do
-  devise_for :users
+  get "registrations/new"
+  get "registrations/create"
+  devise_for :users, controllers: {registrations: 'registrations'}
 
   root "pages#index"
 
