@@ -9,20 +9,18 @@
   %section.top-bar-section
     %ul.left
       %li.divider
+      - if user_signed_in?
         %li.has-dropdown
-          - if user_signed_in?
-            =link_to "Logged in as #{current_user.email}", root_url
-            %ul.dropdown
-              %li
-                =link_to 'Sign out', destroy_user_session_path, :method => :delete
-          - else
-            - if at_least_one_user?
-              = link_to "Sign in", new_user_session_path
-              %ul.dropdown
-                %li
-                  = link_to "Sign up", new_user_registration_path
-            - else
-              = link_to "Sign up", new_user_registration_path
+          =link_to "Logged in as #{current_user.email}", root_url
+          %ul.dropdown
+            %li
+              =link_to 'Sign out', destroy_user_session_path, :method => :delete
+      - elsif at_least_one_user?
+        %li.active
+          = link_to "Sign in", new_user_session_path
+      - else
+        %li.active
+          = link_to "Sign up", new_user_registration_path
       %li.divider
     %ul.right
       %li
