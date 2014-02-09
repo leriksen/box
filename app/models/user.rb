@@ -5,17 +5,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable
 
-  scope :with_role, -> (role) {where("roles_mask & ? > 0", 2**ROLES.index(role.to_sym))}
+  scope :with_role, -> (role) {where("roles_mask & ? > 0", 2**ROLES.index(role.to_s))}
 
   # if you ever add new roles to this array, add them to the end
   # to avoid breaking the roles_mask of existing users
   unless defined? ROLES
-    ROLES = %i(admin manager worker) 
+    ROLES = %w(admin manager worker) 
   end
 
-  # typically roles will be passed as an array of strings, map to internal format
   def roles=(roles)
-    self.roles_mask = (roles.map(&:to_sym) & ROLES).map { |r| 2**ROLES.index(r) }.sum
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
 
   def roles
@@ -23,6 +22,6 @@ class User < ActiveRecord::Base
   end
 
   def role?(role)
-    roles.include? role
+    roles.include? role.to_s
   end
 end
