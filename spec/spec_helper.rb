@@ -17,7 +17,7 @@ Spork.prefork do
     config.order = "random"
 
     # Include the Capybara DSL so that specs in spec/requests still work.
-    config.include Capybara::DSL
+    # config.include Capybara::DSL
 
     config.include FactoryGirl::Syntax::Methods
 
