@@ -11,9 +11,10 @@ module FoundationHelper
       fragment = content_tag(:div, message, class: "alert-box radius #{style}", data: {alert: ''}) do
         (message + closer).html_safe
       end
+
       content << fragment
     end
-
+    
     content.join.html_safe
   end
 end

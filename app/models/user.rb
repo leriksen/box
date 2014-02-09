@@ -7,7 +7,11 @@ class User < ActiveRecord::Base
 
   scope :with_role, -> (role) {where("roles_mask & ? > 0", 2**ROLES.index(role.to_sym))}
 
-  ROLES = %i(admin manager worker)
+  # if you ever add new roles to this array, add them to the end
+  # to avoid breaking the roles_mask of existing users
+  unless defined? ROLES
+    ROLES = %i(admin manager worker) 
+  end
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum

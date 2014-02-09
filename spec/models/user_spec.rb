@@ -5,7 +5,7 @@ describe User do
   describe :create do
     context :basic_user do
       it 'can create a user' do
-        user.email.should match(/example[.]com/) 
+        expect(user.email).to match(/example[.]com/) 
       end
     end    
   end
@@ -13,34 +13,34 @@ describe User do
   describe :roles= do
     context 'basic_user' do
       it 'can add one role to a user' do
-        user.role?(:admin).should be_false
+        expect(user.role?(:admin)).to be_false
         user.roles = [:admin]
-        user.role?(:admin).should be_true
-        user.role?(:worker).should be_false
+        expect(user.role?(:admin)).to be_true
+        expect(user.role?(:worker)).to be_false
       end      
       it 'can add multiple roles to a user' do
-        user.role?(:admin).should be_false
-        user.role?(:manager).should be_false
-        user.role?(:worker).should be_false
+        expect(user.role?(:admin)).to be_false
+        expect(user.role?(:manager)).to be_false
+        expect(user.role?(:worker)).to be_false
         user.roles = [:admin, :worker]
-        user.role?(:admin).should be_true
-        user.role?(:manager).should be_false
-        user.role?(:worker).should be_true
+        expect(user.role?(:admin)).to be_true
+        expect(user.role?(:manager)).to be_false
+        expect(user.role?(:worker)).to be_true
       end      
     end
   end
   describe :roles do
     context :basic_user do
-      it 'should be empty for a new user' do
-        user.roles.should be_empty
+      it 'to be empty for a new user' do
+        expect(user.roles).to be_empty
       end
     end
   end
 
   describe :role? do
     context :basic_user do
-      it 'should not be true of admin role' do
-        user.role?(:admin).should be_false
+      it 'to not be true of admin role' do
+        expect(user.role?(:admin)).to be_false
       end
     end
   end

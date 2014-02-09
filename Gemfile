@@ -60,6 +60,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
+  gem 'meta_request' # enables RailsPanel in Chrome
 end
 
 group :test do
