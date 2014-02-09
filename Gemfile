@@ -37,6 +37,9 @@ gem 'unicorn'
 gem 'devise'
 gem 'cancan'
 
+# control the pow server, in case we want to use rails server directly
+gem 'powder'
+
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
