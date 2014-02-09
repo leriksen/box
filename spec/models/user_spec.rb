@@ -14,7 +14,8 @@ describe User do
     context 'basic_user' do
       it 'can add one role to a user' do
         expect(user.role?(:admin)).to be_false
-        user.roles = [:admin]
+        # roles will be passed from a form as an array of strings
+        user.roles = ['admin']
         expect(user.role?(:admin)).to be_true
         expect(user.role?(:worker)).to be_false
       end      
@@ -22,7 +23,7 @@ describe User do
         expect(user.role?(:admin)).to be_false
         expect(user.role?(:manager)).to be_false
         expect(user.role?(:worker)).to be_false
-        user.roles = [:admin, :worker]
+        user.roles = ['admin', 'worker']
         expect(user.role?(:admin)).to be_true
         expect(user.role?(:manager)).to be_false
         expect(user.role?(:worker)).to be_true

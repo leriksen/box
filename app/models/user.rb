@@ -13,8 +13,9 @@ class User < ActiveRecord::Base
     ROLES = %i(admin manager worker) 
   end
 
+  # typically roles will be passed as an array of strings, map to internal format
   def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+    self.roles_mask = (roles.map(&:to_sym) & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
 
   def roles
