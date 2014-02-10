@@ -19,9 +19,12 @@
     = f.password_field :password_confirmation
 
   %div
-    = f.label :role
+    = f.label :roles
+    - for role in User::ROLES
+      = check_box_tag "user[roles][]", role, @user.roles.include?(role)
+      = h role.to_s.humanize
+    = hidden_field_tag "user[roles][]"
     %br/
-    = f.collection_select :roles, User::ROLES, :to_sym, :to_s
 
   %div
     = f.submit "Sign up"
