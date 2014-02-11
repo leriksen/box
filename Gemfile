@@ -17,7 +17,7 @@ gem 'coffee-rails'
 
 gem 'jquery-rails'
 
-gem 'zurb-foundation'
+gem 'foundation-rails'
 
 gem 'turbolinks'
 
