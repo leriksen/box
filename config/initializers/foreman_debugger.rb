@@ -1,5 +1,6 @@
 # Enabled debugger with foreman, see https://github.com/ddollar/foreman/issues/58
-if Rails.env.development?
+if Rails.env.development? && ENV.select{|n,v| n == 'RDEBUG' && v == '1'}.any?
+  puts "turn on rdebug"
   require 'debugger'
   Debugger.wait_connection = true
 
