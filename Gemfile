@@ -41,7 +41,11 @@ gem 'cancan'
 gem 'powder'
 
 group :development, :test do
-  gem 'debugger'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
+  
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   
