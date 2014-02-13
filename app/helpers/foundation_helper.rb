@@ -7,11 +7,8 @@ module FoundationHelper
     content = []
     flashes.each do |kind, message|
 
-      # some of the devise flashes are of the form
-      # :timedout => true
-      # there is always a standard flash message in the array as well,
-      # so we just use the kind for these non-standard ones
-      message = kind.to_s.humanize unless flash_foundation.has_key?(kind)
+      # not all the flashes have the struture that foundation uses, skip those
+      next unless flash_foundation.has_key?(kind)
 
       style = flash_foundation.fetch(kind, 'standard')
 
