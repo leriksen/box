@@ -3,3 +3,10 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+
+// required to bring in rem-calc function
+ @import "foundation";
+
+ .alert-box {
+  margin-top: rem-calc(20);
+ }
