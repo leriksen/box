@@ -1,20 +1,17 @@
-development:
+common: &common
   adapter: postgresql
-  database: box_postgresql_development
   encoding: unicode
   pool: 5
   timeout: 5000
+
+development:
+  <<: *common
+  database: box_postgresql_development
 
 test:
-  adapter: postgresql
+  <<: *common
   database: box_postgresql_test
-  encoding: unicode
-  pool: 5
-  timeout: 5000
 
 production:
-  adapter: postgresql
+  <<: *common
   database: box_postgresql_production
-  encoding: unicode
-  pool: 5
-  timeout: 5000

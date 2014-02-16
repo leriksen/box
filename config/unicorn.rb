@@ -1,5 +1,12 @@
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 15
+if ENV['RDEBUG'] == '1'
+  puts 'Starting with single process and long timeout'
+  worker_processes 1
+  timeout 60 * 60 * 24 * 30
+else
+  worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+  timeout 15
+end
+
 preload_app true
 
 before_fork do |server, worker|
