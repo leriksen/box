@@ -22,10 +22,10 @@
   = csrf_meta_tag
 
 %body
+  = render 'shared/nav'
   .row
-    = render 'shared/nav'
     = render 'shared/alerts'
     = yield
-    = render 'shared/footer' 
+  = render 'shared/footer' 
 
   = javascript_include_tag "application"
