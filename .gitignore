@@ -33,3 +33,4 @@ config/secrets.yml
 .env
 public
 test
+.powenv
