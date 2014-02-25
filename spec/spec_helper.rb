@@ -21,6 +21,9 @@ Spork.prefork do
 
     config.include FactoryGirl::Syntax::Methods
 
+    config.include Devise::TestHelpers, type: :controller
+    config.include Devise::TestHelpers, type: :view
+
     # Disable the old-style object.should syntax.
     config.expect_with :rspec do |c|
       c.syntax = :expect
