@@ -29,8 +29,6 @@ end
 
 gem 'bcrypt-ruby'
 
-gem 'capistrano', group: :development
-
 gem 'foreman'
 gem 'unicorn'
 
@@ -68,6 +66,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'meta_request' # enables RailsPanel in Chrome
+  gem 'capistrano', group: :development
+  gem 'capybara'
 end
 
 group :test do
