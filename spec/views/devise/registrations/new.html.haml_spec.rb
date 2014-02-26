@@ -11,8 +11,14 @@ describe "devise/registrations/new.html.haml" do
         render
       end
 
-      it "should display filled and disabled checkboxes" do
+      it "should display signup form" do
         expect(rendered).to match /Sign Up/
+      end
+
+      it "should display filled and disabled checkboxes" do
+        expect(rendered).to have_css("input[type='checkbox'][disabled='disabled'][checked='checked'][id='user_roles_'][value='admin']")
+        expect(rendered).to have_css("input[type='checkbox'][disabled='disabled'][checked='checked'][id='user_roles_'][value='worker']")
+        expect(rendered).to have_css("input[type='checkbox'][disabled='disabled'][checked='checked'][id='user_roles_'][value='manager']")
       end
     end
   end
