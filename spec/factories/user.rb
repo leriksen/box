@@ -1,7 +1,14 @@
 FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "person#{n}@example.com" }
-    encrypted_password "qwqwqwqw"
+
+    ignore do
+      signup false
+    end
+
+    after(:build) do |user, evaluator|
+      user.password = 'qwqwqwqw' if evaluator.signup
+    end
 
     # create #worker, etc factories
     User::ROLES.each do |this_role|
@@ -10,8 +17,8 @@ FactoryGirl.define do
           role this_role
         end
 
-        after(:create) do |user, evaluator|
-          user.roles(evaluator.role)
+        after(:build) do |user, evaluator|
+          user.roles = Array evaluator.role
         end
       end
     end

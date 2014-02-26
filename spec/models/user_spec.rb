@@ -44,4 +44,28 @@ describe User do
       end
     end
   end
+
+  context "factory tests" do
+    describe 'user with role' do
+      context :worker do
+        let(:worker) {build :worker}
+        it 'has the worker role' do
+          expect(worker.role?('worker')).to be_true
+        end
+      end
+      context :manager do
+        let(:manager) {build :manager}
+        it 'has the manager role' do
+          expect(manager.role?('manager')).to be_true
+        end
+      end
+
+      context :admin do
+        let(:admin) {build :admin}
+        it 'has the admin role' do
+          expect(admin.role?('admin')).to be_true
+        end
+      end
+    end
+  end
 end

@@ -15,10 +15,10 @@ describe "navbar" do
     end
 
     describe "with one user" do
-      let(:user) {build :user}
+      let(:user) {build :user, signup: true}
 
       it "should display signin link" do
-        user.save(validate: false)
+        user.save
 
         render :partial => "shared/nav.html.haml"
 
