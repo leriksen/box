@@ -34,3 +34,5 @@ config/secrets.yml
 public
 test
 .powenv
+test-reports/rspec.html
+test-reports/rspec.xml

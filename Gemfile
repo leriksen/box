@@ -45,6 +45,7 @@ group :development, :test do
   gem 'pry-debugger'
   
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'factory_girl_rails'
   
   # DRb server for testing frameworks
