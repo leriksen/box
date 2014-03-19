@@ -35,6 +35,8 @@ gem 'unicorn'
 gem 'devise'
 gem 'cancan'
 
+gem 'draper'
+
 # control the pow server, in case we want to use rails server directly
 gem 'powder'
 
