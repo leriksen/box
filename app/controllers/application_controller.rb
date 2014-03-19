@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email, :password, :password_confirmation, roles: [])}
   end
+
+  def current_user
+    UserDecorator.decorate(super) unless super.nil?
+  end
 end
