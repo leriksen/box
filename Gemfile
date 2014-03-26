@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 
 ruby '2.1.0'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.3'
 
 gem 'rake'
 
 gem 'pg'
 
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.2'
 gem 'haml-rails'
 
 gem 'uglifier'
@@ -34,8 +34,6 @@ gem 'unicorn'
 
 gem 'devise'
 gem 'cancan'
-
-gem 'draper'
 
 # control the pow server, in case we want to use rails server directly
 gem 'powder'
