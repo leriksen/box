@@ -38,6 +38,8 @@ gem 'cancan'
 # control the pow server, in case we want to use rails server directly
 gem 'powder'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-remote'
