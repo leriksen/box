@@ -38,7 +38,7 @@ gem 'cancan'
 # control the pow server, in case we want to use rails server directly
 gem 'powder'
 
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'rails_admin', github: 'sferik/rails_admin'
 
 group :development, :test do
   gem 'pry'
@@ -51,8 +51,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   
   # DRb server for testing frameworks
-  gem 'spork', :github => 'sporkrb/spork'
-  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  gem 'spork', github: 'sporkrb/spork'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
   
   # command line tool to easily handle events on file system modifications
   gem 'guard'
