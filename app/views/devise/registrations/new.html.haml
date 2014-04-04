@@ -20,13 +20,14 @@
 
   %div
     = f.label :roles
-    - unless no_users?
-      - for role in User::ROLES
-        = check_box_tag "user[roles][]", role, @user.roles.include?(role)
+    - if no_users? # initial user gets all roles
+      - User::ROLES.each do |role|
+        - status = (role == 'customer' ? false : true)
+        = check_box_tag "user[roles][]", role, status, disabled: true
         = h role.to_s.humanize
-    - else # initial user gets all roles
-      - for role in User::ROLES
-        = check_box_tag "user[roles][]", role, true, disabled: true
+    - else
+      - User::ROLES.each do |role|
+        = check_box_tag "user[roles][]", role, @user.roles.include?(role)
         = h role.to_s.humanize
     = hidden_field_tag "user[roles][]"
     %br/
