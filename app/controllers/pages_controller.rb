@@ -4,7 +4,8 @@ class PagesController < ApplicationController
 
   def index
     redirect_to(new_user_registration_path,
-                alert: "No users exist yet. Please create Admin user") and return if User.count == 0
+                alert: "No users exist yet. Please create Admin user") and
+      return if User.count == 0
   end
 
   def show
