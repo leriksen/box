@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.1'
 
-gem 'rails', '4.0.3'
+gem 'rails'
 
 gem 'rake'
 
 gem 'pg'
 
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails'
 gem 'haml-rails'
 
 gem 'uglifier'
