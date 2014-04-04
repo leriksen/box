@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
   # if you ever add new roles to this array, add them to the end
   # to avoid breaking the roles_mask of existing users
   unless defined? ROLES
-    ROLES = %w(admin manager worker) 
+    ROLES = %w(admin manager staff customer) 
   end
 
   def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+    return if roles.length > 1 and roles.include?('customer')
+    roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+    self.roles_mask = roles_mask
   end
 
   def roles

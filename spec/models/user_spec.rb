@@ -16,16 +16,24 @@ describe User do
         expect(user.role?('admin')).to be_false
         user.roles = ['admin']
         expect(user.role?('admin')).to be_true
-        expect(user.role?('worker')).to be_false
+        expect(user.role?('staff')).to be_false
       end      
+
       it 'can add multiple roles to a user' do
         expect(user.role?('admin')).to be_false
         expect(user.role?('manager')).to be_false
-        expect(user.role?('worker')).to be_false
-        user.roles = ['admin', 'worker']
+        expect(user.role?('staff')).to be_false
+        user.roles = ['admin', 'staff']
         expect(user.role?('admin')).to be_true
         expect(user.role?('manager')).to be_false
-        expect(user.role?('worker')).to be_true
+        expect(user.role?('staff')).to be_true
+      end      
+
+      it 'will not let any other role be assigned with customer' do
+        user.roles = ['admin']
+        expect(user.role?('admin')).to be_true
+        user.roles = ['admin', 'customer']
+        expect(user.role?('admin')).to be_true
       end      
     end
   end
@@ -47,10 +55,10 @@ describe User do
 
   context "factory tests" do
     describe 'user with role' do
-      context :worker do
-        let(:worker) {build :worker}
-        it 'has the worker role' do
-          expect(worker.role?('worker')).to be_true
+      context :staff do
+        let(:staff) {build :staff}
+        it 'has the staff role' do
+          expect(staff.role?('staff')).to be_true
         end
       end
       context :manager do
