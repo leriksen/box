@@ -8,7 +8,9 @@ class Ability
       can :manage, :all
     elsif user.role? :manager
       can [:create, :update], :all
-    elsif user.role? :worker
+    elsif user.role? :staff
+      can [:read], :all
+    elsif user.role? :customer
       can [:read], :all
     else # guest
     end
