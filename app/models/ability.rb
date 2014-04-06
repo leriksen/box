@@ -4,14 +4,14 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user
     
-    if user.role? :admin
+    if user.is? :admin
       can :manage, :all
-    elsif user.role? :manager
+    elsif user.is? :manager
+      # cannot destroy - though we may support an inactive flag and make that the destroy
       can [:create, :update], :all
-    elsif user.role? :staff
-      can [:read], :all
-    elsif user.role? :customer
-      can [:read], :all
+    elsif user.is? :staff
+      can :update, User
+    elsif user.is? :customer
     else # guest
     end
   end
