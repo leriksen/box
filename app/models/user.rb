@@ -14,9 +14,11 @@ class User < ActiveRecord::Base
   end
 
   def roles=(roles)
-    return if roles.length > 1 and roles.include?('customer')
-    roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
-    self.roles_mask = roles_mask
+    roles.select!{|r|not r.empty?} # strip blanks
+
+    return if roles.length > 1 and roles.include?('customer') # cant be a customer and something else
+
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
 
   def roles
@@ -26,4 +28,6 @@ class User < ActiveRecord::Base
   def role?(role)
     roles.include? role.to_s
   end
+
+  alias_method :is?, :role?
 end
