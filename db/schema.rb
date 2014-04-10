@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140129112815) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "roles_mask"
+    t.integer  "roles_mask",             default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

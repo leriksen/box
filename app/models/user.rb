@@ -10,15 +10,23 @@ class User < ActiveRecord::Base
   # if you ever add new roles to this array, add them to the end
   # to avoid breaking the roles_mask of existing users
   unless defined? ROLES
-    ROLES = %w(admin manager staff customer) 
+    ROLES = %w(guest customer staff manager admin)
   end
 
-  def roles=(roles)
-    roles.select!{|r|not r.empty?} # strip blanks
+  # TODO - can transition from guest to anything, how to protect ?
+  def roles=(new_roles)
 
-    return if roles.length > 1 and roles.include?('customer') # cant be a customer and something else
+    new_roles.select!{|r|not r.empty?} # strip blanks
 
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+    new_roles.map!{|r|r.to_s}
+
+    return if roles.include?('customer') or 
+      (roles.length >= 1 and new_roles.include?('customer'))
+       # cant be a customer and something else
+
+    roles_mask = (new_roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+
+    self.roles_mask = roles_mask
   end
 
   def roles
@@ -26,7 +34,12 @@ class User < ActiveRecord::Base
   end
 
   def role?(role)
-    roles.include? role.to_s
+    case role.to_s
+    when 'guest'
+      roles.empty?
+    else
+      roles.include? role.to_s
+    end
   end
 
   alias_method :is?, :role?
