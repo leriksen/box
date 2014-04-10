@@ -1,5 +1,6 @@
 module FoundationHelper
   def flash_map(flashes = {})
+    # devise can insert flashes with some other keys e.g. :timedout. We ignore these.
     flash_foundation = {:notice => 'success', :alert => 'standard', :error => 'alert', :secondary => 'secondary'}
 
     closer = link_to escape_once("&times;"), '#',  class: :close
