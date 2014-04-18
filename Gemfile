@@ -38,7 +38,11 @@ gem 'cancan'
 # control the pow server, in case we want to use rails server directly
 gem 'powder'
 
+gem 'paper_trail'
+
 gem 'rails_admin', github: 'sferik/rails_admin'
+
+gem 'econfig', require: 'econfig/rails'
 
 group :development, :test do
   gem 'pry'

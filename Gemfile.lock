@@ -112,6 +112,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     dotenv (0.10.0)
+    econfig (0.1.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -203,6 +204,9 @@ GEM
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
+    paper_trail (3.0.1)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     pg (0.17.1)
     polyglot (0.3.4)
     powder (0.2.1)
@@ -337,6 +341,7 @@ DEPENDENCIES
   capybara
   coffee-rails
   devise
+  econfig
   factory_girl_rails
   foreman
   foundation-rails
@@ -350,6 +355,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   meta_request
+  paper_trail
   pg
   powder
   pry
