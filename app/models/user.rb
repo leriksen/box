@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable
 
+  has_paper_trail
+
   scope :with_role, -> (role) {where("roles_mask & ? > 0", 2**ROLES.index(role.to_s))}
 
   # if you ever add new roles to this array, add them to the end
