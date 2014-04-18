@@ -10,6 +10,7 @@ end
 guard 'spork', wait: 60, cucumber: false, rspec: true, test_unit: false do
   watch('config/application.rb')
   watch('config/environment.rb')
+  watch('config/app.yml')
   watch(%r{^config/environments/.+\.rb$})
   watch(%r{^config/initializers/.+\.rb$})
   watch('Gemfile')
@@ -21,6 +22,8 @@ guard 'rspec', cmd: 'bundle exec rspec --drb' do
   watch(%r{^spec/factories/(.+).rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
+  
+  watch('config/app.yml')  { "spec/application_helper_spec.rb" }
 
   # Rails example
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
