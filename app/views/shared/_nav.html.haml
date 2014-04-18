@@ -16,7 +16,7 @@
             %li
               =link_to 'Sign Out', destroy_user_session_path, :method => :delete
           %li
-            =link_to 'Admin', '#'
+            =link_to 'Admin', rails_admin.dashboard_path
       - elsif at_least_one_user?
         %li.active
           = link_to "Sign In", new_user_session_path
