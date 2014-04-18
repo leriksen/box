@@ -9,7 +9,7 @@
     -# Initialize JS simple i18n
     :javascript
       RailsAdmin.I18n.init(JSON.parse("#{j I18n.t("admin.js").to_json}"))
-    %title= content_for?(:title) ? yield(:title) : "KennelBox"
+    %title= content_for?(:title) ? yield(:title) : Box.name
   %body.rails_admin
     #loading.label.label-warning{style: 'display:none; position:fixed; right:20px; bottom:20px; z-index:100000'}= t('admin.loading')
     .navbar.navbar-fixed-top
@@ -17,7 +17,7 @@
         .container-fluid
           %a.brand.pjax{href: dashboard_path}
             / = _get_plugin_name[0] || 'Rails'
-            = content_for?(:title) ? yield(:title) : "KennelBox"
+            = content_for?(:title) ? yield(:title) : Box.name
             %small= _get_plugin_name[1] || 'Admin'
           .nav-collapse
             = render partial: 'layouts/rails_admin/secondary_navigation'
