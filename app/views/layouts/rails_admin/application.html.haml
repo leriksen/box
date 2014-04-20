@@ -1,31 +1,37 @@
 !!! 5
-%html
-  %head
-    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
-    %meta{content: "NONE,NOARCHIVE", name: "robots"}
-    = csrf_meta_tag
-    = stylesheet_link_tag "rails_admin/rails_admin.css", media: :all
-    = javascript_include_tag "rails_admin/rails_admin.js"
-    -# Initialize JS simple i18n
-    :javascript
-      RailsAdmin.I18n.init(JSON.parse("#{j I18n.t("admin.js").to_json}"))
-    %title= content_for?(:title) ? yield(:title) : Box.site_name
-  %body.rails_admin
-    #loading.label.label-warning{style: 'display:none; position:fixed; right:20px; bottom:20px; z-index:100000'}= t('admin.loading')
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container-fluid
-          %a.brand.pjax{href: main_app.root_path}
-            = content_for?(:title) ? yield(:title) : Box.site_name
-            %small= _get_plugin_name[1] or 'Admin'
-          .nav-collapse
-            = render partial: 'layouts/rails_admin/secondary_navigation'
-    .container-fluid
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list= main_navigation
-            %ul.nav.nav-list= static_navigation
-        .span9
-          .row-fluid
-            .content{:'data-pjax-container' => true}= render template: 'layouts/rails_admin/pjax'
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7 ] <html class=\"ie6\" lang=\"en\">
+/[if IE 7 ]    <html class=\"ie7\" lang=\"en\">
+/[if IE 8 ]    <html class=\"ie8\" lang=\"en\">
+/[if IE 9 ]    <html class=\"ie9\" lang=\"en\">
+/[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
+
+%head
+  %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+  %meta{content: "NONE,NOARCHIVE", name: "robots"}
+  = csrf_meta_tag
+  = stylesheet_link_tag "rails_admin/rails_admin.css", media: :all
+  = javascript_include_tag "rails_admin/rails_admin.js"
+  -# Initialize JS simple i18n
+  :javascript
+    RailsAdmin.I18n.init(JSON.parse("#{j I18n.t("admin.js").to_json}"))
+  %title= content_for?(:title) ? yield(:title) : Box.site_name
+%body.rails_admin
+  #loading.label.label-warning{style: 'display:none; position:fixed; right:20px; bottom:20px; z-index:100000'}= t('admin.loading')
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        %a.brand.pjax{href: main_app.root_path}
+          = content_for?(:title) ? yield(:title) : Box.site_name
+          %small= _get_plugin_name[1] or 'Admin'
+        .nav-collapse
+          = render partial: 'layouts/rails_admin/secondary_navigation'
+  .container-fluid
+    .row-fluid
+      .span3
+        .well.sidebar-nav
+          %ul.nav.nav-list= main_navigation
+          %ul.nav.nav-list= static_navigation
+      .span9
+        .row-fluid
+          .content{:'data-pjax-container' => true}= render template: 'layouts/rails_admin/pjax'
