@@ -1,8 +1,5 @@
-@import "foundation_and_overrides";
+@import 'settings';
 
-// required to bring in rem-calc function
- @import "foundation";
+@import 'foundation';
 
- .alert-box {
-  margin-top: rem-calc(20);
- }
+@import 'alerts';
