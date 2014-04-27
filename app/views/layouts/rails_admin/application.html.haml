@@ -1,21 +1,19 @@
 !!! 5
-/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
-/[if lt IE 7 ] <html class=\"ie6\" lang=\"en\">
-/[if IE 7 ]    <html class=\"ie7\" lang=\"en\">
-/[if IE 8 ]    <html class=\"ie8\" lang=\"en\">
-/[if IE 9 ]    <html class=\"ie9\" lang=\"en\">
-/[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
 
 %head
-  %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+  %meta{ charset: "utf-8" }
+  -# Set the viewport width to device width for mobile
+  %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
   %meta{content: "NONE,NOARCHIVE", name: "robots"}
-  = csrf_meta_tag
+
+  %title= content_for?(:title) ? yield(:title) : Box.site_name
+
   = stylesheet_link_tag "rails_admin/rails_admin.css", media: :all
   = javascript_include_tag "rails_admin/rails_admin.js"
   -# Initialize JS simple i18n
   :javascript
     RailsAdmin.I18n.init(JSON.parse("#{j I18n.t("admin.js").to_json}"))
-  %title= content_for?(:title) ? yield(:title) : Box.site_name
+  = csrf_meta_tag
 %body.rails_admin
   #loading.label.label-warning{style: 'display:none; position:fixed; right:20px; bottom:20px; z-index:100000'}= t('admin.loading')
   .navbar.navbar-fixed-top
