@@ -8,16 +8,13 @@ gem 'rake'
 
 gem 'pg'
 
-gem 'sass-rails'
-gem 'haml-rails'
-
 gem 'uglifier'
 
+gem 'sass-rails'
+gem 'haml-rails'
 gem 'coffee-rails'
-
 gem 'jquery-rails'
-
-gem 'foundation-rails'
+gem 'bootstrap-sass'
 
 gem 'turbolinks'
 
