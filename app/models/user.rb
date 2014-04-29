@@ -15,20 +15,23 @@ class User < ActiveRecord::Base
     ROLES = %w(guest customer staff manager admin)
   end
 
-  # TODO - can transition from guest to anything, how to protect ?
   def roles=(new_roles)
-
     new_roles.select!{|r|not r.empty?} # strip blanks
 
     new_roles.map!{|r|r.to_s}
 
-    return if roles.include?('customer') or 
+    # cant be a customer and something else
+    if roles.include?('customer') or 
       (roles.length >= 1 and new_roles.include?('customer'))
-       # cant be a customer and something else
+      $stderr.puts "#{Time.now} - #{__method__} - attempt to add a role to customer"
+      return 
+    end
 
     roles_mask = (new_roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
 
     self.roles_mask = roles_mask
+
+    self
   end
 
   def roles
