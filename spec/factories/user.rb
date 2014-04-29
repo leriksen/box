@@ -22,10 +22,5 @@ FactoryGirl.define do
         end
       end
     end
-
-    # TODO
-    # factory :guest do
-    #   user
-    # end
   end
 end
