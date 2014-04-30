@@ -3,7 +3,7 @@ module BootstrapHelper
     # devise can insert flashes with some other keys e.g. :timedout. We ignore these.
 
     # map from devise to bootstrap names
-    devise_bootstrap = {notice: 'success', alert: 'info', error: 'danger', secondary: 'warning'}
+    devise_bootstrap = {notice: 'success', alert: 'danger', error: 'danger', secondary: 'warning'}
 
     closer = button_tag(escape_once("&times;"), class: 'close', data: {dismiss: 'alert'}, 'aria-hidden' => true)
 

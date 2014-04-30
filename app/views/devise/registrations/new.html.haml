@@ -1,47 +1,49 @@
 %h2 Sign Up
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'new-user form-horizontal'}) do |f|
   = devise_error_messages!
 
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
+  .form-group
+    = f.label :email, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.email_field :email, autofocus: true, class: 'form-control'
 
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
+  .form-group
+    = f.label :password, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.password_field :password, class: 'form-control'
 
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
+  .form-group
+    = f.label :password_confirmation, class: 'control-label col-sm-2'
+    .col-sm-10
+      = f.password_field :password_confirmation, class: 'form-control'
 
-  %div
-    - if no_users? # initial user gets all admin roles
-      - User::ROLES.each do |role|
-        - next if role == 'customer'
-        -# ok we have to be a bit dirty here
-        -# we want to display the admin checkbox, so the user understands they are getting the role
-        -# but we dont want to let them interact with the checkbox
-        -# readonly doesnt work as it only stops changing the value, not the interaction with the checked state
-        -# disabled doesnt work as it stops interaction, but then the checkbox isnt submitted to the server
-        -# so we make two checkboxes
-        -# one is displayed with disabled but ignored at the server (not whitelisted)
-        -# one is hidden, but enabled so it is processed by the server
-        = check_box_tag "user[roles][]", role, true, hidden: true, readonly: true
-        = check_box_tag "user[roles_ignored][]", role, true, disabled: true, readonly: true
-        = h role.humanize 
-    - else
-      = f.label :roles
-      - User::ROLES.each do |role|
-        = check_box_tag "user[roles][]", role, @user.roles.include?(role)
-        = h role.humanize
-    = hidden_field_tag "user[roles][]"
-    %br/
+  - if no_users? # initial user gets all admin roles
+    - role = 'admin'
+    -# ok we have to be a bit dirty here
+    -# we want to display the admin checkbox, so the user understands they are getting the role
+    -# but we dont want to let them interact with the checkbox
+    -# readonly doesnt work as it only stops changing the value, not the interaction with the checked state
+    -# disabled doesnt work as it stops interaction, but then the checkbox isnt submitted to the server
+    -# so we make two checkboxes
+    -# one is displayed with disabled but ignored at the server (not whitelisted)
+    -# one is hidden, but enabled so it is processed by the server
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        .checkbox
+          %label
+            = check_box_tag "user[roles][]", role, true, hidden: true, readonly: true
+            = check_box_tag "user[roles_ignored][]", role, true, disabled: true, readonly: true
+            = h role.humanize
+  - else
+    = f.label :roles, class: 'control-label col-sm-2'
+    - User::ROLES.each do |role|
+      = check_box_tag "user[roles][]", role, @user.roles.include?(role)
+      = h role.humanize
+  = hidden_field_tag "user[roles][]"
 
-  %div
-    = f.submit "Sign up", class: "button round tiny small"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Sign up", class: "btn btn-default"
 
   = render "devise/shared/links"

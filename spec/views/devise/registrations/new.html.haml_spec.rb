@@ -17,8 +17,6 @@ describe "devise/registrations/new.html.haml" do
 
       it "should display filled and disabled checkboxes" do
         expect(rendered).to have_css('input[type="checkbox"][checked="checked"][disabled="disabled"][value="admin"]')
-        expect(rendered).to have_css('input[type="checkbox"][checked="checked"][disabled="disabled"][value="manager"]')
-        expect(rendered).to have_css('input[type="checkbox"][checked="checked"][disabled="disabled"][value="staff"]')
       end
     end
   end
