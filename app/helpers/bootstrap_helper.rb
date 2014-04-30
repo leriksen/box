@@ -5,7 +5,7 @@ module BootstrapHelper
     # map from devise to bootstrap names
     devise_bootstrap = {notice: 'success', alert: 'info', error: 'danger', secondary: 'warning'}
 
-    closer = link_to escape_once("&times;"), '#',  class: :close
+    closer = button_tag(escape_once("&times;"), class: 'close', data: {dismiss: 'alert'}, 'aria-hidden' => true)
 
     content = []
     flashes.each do |kind, message|
@@ -16,7 +16,7 @@ module BootstrapHelper
 
       style = devise_bootstrap.fetch(sym, 'info')
 
-      fragment = content_tag(:div, message, class: "alert alert-#{style}", data: {alert: ''}) do
+      fragment = content_tag(:div, message, class: "alert alert-#{style} alert-dismissable", data: {alert: ''}) do
         (message + closer).html_safe
       end
 
