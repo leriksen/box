@@ -4,7 +4,7 @@ class Ability
   def initialize(user=nil)
     user ||= User.new # guest user
     
-    # Note there are some protections in User model to, namely
+    # Note there are some protections in User model too, namely
     # a customer role cannot be combined with anything else.
     # This simplifies this table as we do not need to check if
     # create/updates try to create customer-hybrids, as User#roles=
