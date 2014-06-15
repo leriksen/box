@@ -31,7 +31,7 @@ gem 'foreman'
 gem 'unicorn'
 
 gem 'devise'
-gem 'cancan'
+gem 'cancancan', '~> 1.8.2'
 
 # control the pow server, in case we want to use rails server directly
 gem 'powder'
@@ -42,42 +42,35 @@ gem 'rails_admin', github: 'sferik/rails_admin'
 
 gem 'econfig', require: 'econfig/rails'
 
-group :development, :test do
-  gem 'pry'
-  gem 'pry-remote'
-  gem 'pry-stack_explorer'
-  gem 'pry-debugger'
-  
-  gem 'rspec-rails'
-  gem 'rspec_junit_formatter'
-  gem 'factory_girl_rails'
-  
-  # DRb server for testing frameworks
-  gem 'spork', github: 'sporkrb/spork'
-  gem 'spork-rails', github: 'sporkrb/spork-rails'
-  
-  # command line tool to easily handle events on file system modifications
-  gem 'guard'
-  gem 'guard-bundler'
-  gem 'guard-rspec', require: false
-  gem 'guard-spork'
-  gem 'guard-livereload', require: false
+gem 'pry'
+gem 'pry-remote'
+gem 'pry-stack_explorer'
+gem 'pry-debugger'
 
-  gem 'growl',  require: false
-end
+gem 'rspec-rails'
+gem 'rspec_junit_formatter'
+gem 'factory_girl_rails'
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'spring'
-  gem 'meta_request' # enables RailsPanel in Chrome
-  gem 'capistrano', group: :development
-  gem 'capybara'
-end
+# DRb server for testing frameworks
+gem 'spork', github: 'sporkrb/spork'
+gem 'spork-rails', github: 'sporkrb/spork-rails'
 
-group :test do
-end
+# command line tool to easily handle events on file system modifications
+gem 'guard'
+gem 'guard-bundler'
+gem 'guard-rspec', require: false
+gem 'guard-spork'
+gem 'guard-livereload', require: false
 
-group :production do
-  gem 'rails_12factor'
-end
+gem 'growl',  require: false
+
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'spring'
+gem 'meta_request' # enables RailsPanel in Chrome
+gem 'capistrano', group: :development
+gem 'capybara'
+gem 'cane', require: false
+gem 'simplecov', require: false
+
+gem 'rails_12factor'

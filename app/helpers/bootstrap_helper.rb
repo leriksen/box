@@ -1,3 +1,4 @@
+# reorganise the flash to work with bootstrap
 module BootstrapHelper
   def flash_map(flashes = {})
     # devise can insert flashes with some other keys e.g. :timedout. We ignore these.

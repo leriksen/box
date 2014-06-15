@@ -1,3 +1,5 @@
+# try not to put too much in here - use Policy Objects if possible
+# http://eng.joingrouper.com/blog/2014/03/20/rails-the-missing-parts-policies/
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

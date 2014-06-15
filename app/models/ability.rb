@@ -1,3 +1,4 @@
+# roles mappings
 class Ability
   include CanCan::Ability
   
@@ -15,26 +16,33 @@ class Ability
       can :manage, :all
     elsif user.is? :manager
       # a manager cannot move someone higher than manager
-      can [:create, :read, :update], User do |user|
-        not (user.roles & %w(customer staff manager)).empty?
+      cannot [:create, :read, :update], User do |u|
+        u.role? :admin
+      end
+      # also, cannot interact with guest 
+      cannot [:create, :read, :update], User do |u|
+        u.role? :guest
+      end
+      # can CRU all others 
+      can [:create, :read, :update], User do |u|
+        (u.roles & %w(customer staff manager)).any?
       end
       # cannot destroy - though we may support an inactive flag and make that the destroy
       # can :manage, [Booking, Animal]
       cannot :destory, :all
     elsif user.is? :staff
-      # a staff member cannot move someone higher than staff
-      can [:create, :read, :update], User do |user|
-        not (user.roles & %w(customer staff)).empty?
+      # a staff member cannot interract with higher than staff
+      # also, cannot interract with guest
+      can [:create, :read, :update], User do |u|
+        (u.roles & %w(guest admin manager)).empty?
       end
-      # can :manage, [Booking, Animal]
       cannot :destroy, :all
     elsif user.is? :customer
       can [:read, :update], User, id: user.id
-      # can [:create, :read, :update], [Booking, Animal]
     else # guest
-      # role_map == 2 means is a customer record
-      can :create, User do |user|
-        user.roles == ['customer']
+      can :create, User do |u|
+        # can only update self to customer
+        u.roles == ['customer']
       end
     end
   end

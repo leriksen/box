@@ -1,3 +1,4 @@
+# somewhat static pages - still routed and use HAML/SASS, just no ActiveRecord interaction
 class PagesController < ApplicationController
 
   rescue_from ActionView::MissingTemplate, with: :invalid_page

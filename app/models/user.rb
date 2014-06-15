@@ -1,3 +1,4 @@
+# all users - guest, customer, admins, modelled here
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable and :omniauthable
@@ -11,15 +12,14 @@ class User < ActiveRecord::Base
 
   # if you ever add new roles to this array, add them to the end
   # to avoid breaking the roles_mask of existing users
-  unless defined? ROLES
-    ROLES = %w(guest customer staff manager admin)
-  end
+  ROLES = %w(guest customer staff manager admin)
 
   def roles=(new_roles)
     new_roles.select!{|r|not r.empty?} # strip blanks
 
     new_roles.map!{|r|r.to_s}
 
+    $stderr.puts "#{Time.now} - #{__method__} - new_roles == #{new_roles.inspect}"
     # cant be a customer and something else
     if roles.include?('customer') or 
       (roles.length >= 1 and new_roles.include?('customer'))
