@@ -23,6 +23,8 @@
       - elsif at_least_one_user?
         %li.active
           = link_to "Sign In", new_user_session_path
+        %li.active
+          = link_to "Sign Up", new_user_registration_path
       - else
         %li.active
           = link_to "Sign Up", new_user_registration_path
