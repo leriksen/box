@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
-
 gem 'rails'
 
 gem 'rake'
@@ -31,29 +29,29 @@ gem 'foreman'
 gem 'unicorn'
 
 gem 'devise'
-gem 'cancancan', '~> 1.8.2'
+gem 'cancancan'
 
 # control the pow server, in case we want to use rails server directly
 gem 'powder'
 
 gem 'paper_trail'
 
-gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'rails_admin'
 
 gem 'econfig', require: 'econfig/rails'
 
 gem 'pry'
+gem 'pry-nav'
 gem 'pry-remote'
 gem 'pry-stack_explorer'
-gem 'pry-debugger'
 
 gem 'rspec-rails'
 gem 'rspec_junit_formatter'
 gem 'factory_girl_rails'
 
 # DRb server for testing frameworks
-gem 'spork', github: 'sporkrb/spork'
-gem 'spork-rails', github: 'sporkrb/spork-rails'
+gem 'spork'
+gem 'spork-rails'
 
 # command line tool to easily handle events on file system modifications
 gem 'guard'
