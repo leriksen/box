@@ -23,6 +23,6 @@ module Box
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
 
-    config.force_ssl = true
+    config.force_ssl = false
   end
 end

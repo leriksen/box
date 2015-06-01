@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationHelper do
   it 'returns name from econfig' do

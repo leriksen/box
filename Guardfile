@@ -14,15 +14,15 @@ guard 'spork', wait: 60, cucumber: false, rspec: true, test_unit: false do
   watch(%r{^config/environments/.+\.rb$})
   watch(%r{^config/initializers/.+\.rb$})
   watch('Gemfile')
-  watch('spec/spec_helper.rb')
+  watch(%r{^spec/(spec|rails)_helper.rb$})
 end
 
-guard 'rspec', cmd: 'bundle exec rspec --drb' do
+guard 'rspec', cmd: 'bundle exec rspec' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^spec/factories/(.+).rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
-  watch('spec/spec_helper.rb')  { "spec" }
-  
+  watch(%r{^spec/(spec|rails)_helper.rb$})  { "spec" }
+
   watch('config/app.yml')  { "spec/application_helper_spec.rb" }
 
   # Rails example

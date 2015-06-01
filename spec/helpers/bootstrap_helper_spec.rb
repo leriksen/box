@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe BootstrapHelper do
   it 'returns nothing for empty flashes' do

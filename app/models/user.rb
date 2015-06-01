@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   # if you ever add new roles to this array, add them to the end
   # to avoid breaking the roles_mask of existing users
-  ROLES = %w(guest customer staff manager admin)
+  ROLES ||= %w(guest customer staff manager admin)
 
   def roles=(new_roles)
     new_roles.select!{|r|not r.empty?} # strip blanks

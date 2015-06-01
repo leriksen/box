@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'cancan/matchers'
 
 describe User do
@@ -14,35 +14,35 @@ describe User do
   
   describe :roles= do
     it 'can add one role to a user' do
-      expect(subject.role?('admin')).to be_false
+      expect(subject.role?('admin')).to be_falsey
       subject.roles = ['admin']
-      expect(subject.role?('admin')).to be_true
-      expect(subject.role?('staff')).to be_false
+      expect(subject.role?('admin')).to be_truthy
+      expect(subject.role?('staff')).to be_falsey
     end      
 
     it 'can add multiple roles to a user' do
-      expect(subject.role?('admin')).to be_false
-      expect(subject.role?('manager')).to be_false
-      expect(subject.role?('staff')).to be_false
+      expect(subject.role?('admin')).to be_falsey
+      expect(subject.role?('manager')).to be_falsey
+      expect(subject.role?('staff')).to be_falsey
       subject.roles = ['admin', :manager]
-      expect(subject.role?('admin')).to be_true
-      expect(subject.role?('manager')).to be_true
-      expect(subject.role?('staff')).to be_false
+      expect(subject.role?('admin')).to be_truthy
+      expect(subject.role?('manager')).to be_truthy
+      expect(subject.role?('staff')).to be_falsey
     end      
 
     it 'will not let any other role be assigned the customer role' do
       subject.roles = ['admin']
-      expect(subject.role?('admin')).to be_true
+      expect(subject.role?('admin')).to be_truthy
       subject.roles = ['admin', 'customer']
-      expect(subject.role?('admin')).to be_true
-      expect(subject.role?('customer')).to be_false
+      expect(subject.role?('admin')).to be_truthy
+      expect(subject.role?('customer')).to be_falsey
     end      
 
     it 'will not let a customer have any role added' do
       subject.roles = ['customer']
-      expect(subject.role?('customer')).to be_true
+      expect(subject.role?('customer')).to be_truthy
       subject.roles = ['admin', 'customer']
-      expect(subject.role?('customer')).to be_true
+      expect(subject.role?('customer')).to be_truthy
     end
   end
 
@@ -63,7 +63,7 @@ describe User do
   describe :role? do
     context :basic_user do
       it 'to not have the admin role' do
-        expect(subject.role?('admin')).to be_false
+        expect(subject.role?('admin')).to be_falsey
       end
     end
   end
@@ -73,13 +73,13 @@ describe User do
       context :staff do
         let(:staff) {build :staff}
         it 'has the staff role' do
-          expect(staff.role?('staff')).to be_true
+          expect(staff.role?('staff')).to be_truthy
         end
       end
       context :manager do
         let(:manager) {build :manager}
         it 'has the manager role' do
-          expect(manager.role?('manager')).to be_true
+          expect(manager.role?('manager')).to be_truthy
         end
       end
 
@@ -87,7 +87,7 @@ describe User do
       # context :guest do
       #   let(:guest) {build :guest}
       #   it 'has the guest role' do
-      #     expect(guest.role?('guest')).to be_true
+      #     expect(guest.role?('guest')).to be_truthy
       #   end
       # end
     end
@@ -106,7 +106,7 @@ describe User do
       let(:user) {build :admin}
 
       it 'can manager a user' do
-        expect(user.is? :admin).to be_true
+        expect(user.is? :admin).to be_truthy
         expect(subject).to be_able_to(:manage, (build :user))
       end
 
@@ -114,7 +114,7 @@ describe User do
         candidate = build :customer
         candidate.roles = [:staff]
 
-        expect(candidate.is? :staff).to be_false
+        expect(candidate.is? :staff).to be_falsey
       end
     end
 
@@ -145,7 +145,7 @@ describe User do
     # context :guest do
     #   let(:role) {nil}
     #   it 'creates a guest user' do
-    #     expect(user.role? :guest).to be_true
+    #     expect(user.role? :guest).to be_truthy
     #   end
     # end
   end
