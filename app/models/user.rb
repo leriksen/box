@@ -19,11 +19,9 @@ class User < ActiveRecord::Base
 
     new_roles.map!{|r|r.to_s}
 
-    $stderr.puts "#{Time.now} - #{__method__} - new_roles == #{new_roles.inspect}"
     # cant be a customer and something else
     if roles.include?('customer') or 
       (roles.length >= 1 and new_roles.include?('customer'))
-      $stderr.puts "#{Time.now} - #{__method__} - attempt to add a role to customer"
       return 
     end
 
