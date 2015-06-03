@@ -13,6 +13,9 @@ Spork.prefork do
 
   require File.expand_path("../../config/environment", __FILE__)
 
+  # turn off noise AR logger - must come before migration check
+  ActiveRecord::Base.logger.level = 1
+
   ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
   RSpec.configure do |config|
