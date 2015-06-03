@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "person#{n}@example.com" }
 
-    ignore do
+    transient do
       signup false
     end
 
@@ -13,7 +13,7 @@ FactoryGirl.define do
     # create #worker, etc factories
     User::ROLES.each do |this_role|
       factory this_role.to_sym do
-        ignore do
+        transient do
           role this_role
         end
 

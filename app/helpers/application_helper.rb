@@ -1,3 +1,4 @@
+# mappings to help some of the tests that interact with devise
 module ApplicationHelper
   def no_users?
     User.count == 0

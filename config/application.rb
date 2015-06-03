@@ -7,6 +7,8 @@ require 'rails/all'
 Bundler.require(:default, Rails.env)
 
 module Box
+  extend Econfig::Shortcut
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -21,6 +23,6 @@ module Box
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
 
-    config.force_ssl = true
+    config.force_ssl = false
   end
 end

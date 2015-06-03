@@ -1,0 +1,14 @@
+body { padding-top: 70px; }
+
+.navbar-nav > li:last-child > a {
+  border-right: 1px solid #555;
+}
+
+.navbar-nav > li > a {
+  border-left: 1px solid #555;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #ff0080;
+
+}
