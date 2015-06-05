@@ -13,7 +13,6 @@ gem 'haml-rails'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-gem 'modernizr-rails'
 
 gem 'turbolinks'
 
