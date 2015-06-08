@@ -13,6 +13,18 @@ body { padding-top: 70px; }
 
 }
 
+.pitch .lead, .jumbotron p {
+  margin-bottom: 0px;
+}
+
+.jumbotron {
+  background-image: image-url('big_dog.jpg');
+}
+
+.lead+.p {
+  margin-top: 10px;
+}
+
 .footer .panel {
   margin-top:    5px;
   margin-bottom: 5px;
